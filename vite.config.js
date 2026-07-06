@@ -5,6 +5,6 @@ export default defineConfig({
 
     plugins:[react()],
 
-    base:"/VIBE_20260704/"
+    base:"/vibe_20260704/"
 
 })
