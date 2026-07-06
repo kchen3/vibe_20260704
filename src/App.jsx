@@ -1,32 +1,37 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
-import Home from "./pages/Home";
-import Blog from "./pages/Blog";
-import Post from "./pages/Post";
-import About from "./pages/About";
+export default function App() {
+  const [page, setPage] = useState("home");
 
-function App(){
+  return (
+    <div style={{ padding: "40px", fontFamily: "sans-serif" }}>
+      <nav style={{ marginBottom: "24px" }}>
+        <button onClick={() => setPage("home")}>首頁</button>{" "}
+        <button onClick={() => setPage("blog")}>內頁</button>{" "}
+        <button onClick={() => setPage("post")}>文章頁</button>
+      </nav>
 
-    return(
+      {page === "home" && (
+        <>
+          <h1>首頁</h1>
+          <p>這裡是首頁內容。</p>
+        </>
+      )}
 
-        <BrowserRouter>
+      {page === "blog" && (
+        <>
+          <h1>內頁</h1>
+          <p>這裡是部落格列表。</p>
+        </>
+      )}
 
-            <Routes>
-
-                <Route path="/" element={<Home />} />
-
-                <Route path="/blog" element={<Blog />} />
-
-                <Route path="/post/:id" element={<Post />} />
-
-                <Route path="/about" element={<About />} />
-
-            </Routes>
-
-        </BrowserRouter>
-
-    );
-
+      {page === "post" && (
+        <>
+          <h1>文章頁</h1>
+          <h2>文章標題</h2>
+          <p>文章內容……</p>
+        </>
+      )}
+    </div>
+  );
 }
-
-export default App;
